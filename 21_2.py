@@ -11,7 +11,7 @@ nominal = {
     '7' : 7,
     '8' : 8,
     '9' : 9,
-    '10': 10,
+    'T': 10,
     'J' : 2,
     'Q' : 3,
     'K' : 4,
@@ -19,7 +19,7 @@ nominal = {
 }
 
 #####
-mKoloda = ['2','3','4','5','6','7','8','9','10','J','Q','K','A']
+mKoloda = ['2','3','4','5','6','7','8','9','T','J','Q','K','A']
 koloda = []
 for m in ["♥","♦","♣","♠"]:
     for i in mKoloda:
@@ -85,7 +85,6 @@ while game_bot == 'play':
     card = koloda.pop()
     bot.append(card)
     bot_points.append(nominal.get(card[0]))
-
 
     if sum(bot_points) > 21:
         bot_points = A(bot, bot_points)
