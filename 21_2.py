@@ -19,7 +19,9 @@ nominal = {
 }
 
 #####
-mKoloda = ['2','3','4','5','6','7','8','9','T','J','Q','K','A']
+mKoloda = [
+    #'2','3','4','5',
+    '6','7','8','9','T','J','Q','K','A']
 koloda = []
 for m in ["♥","♦","♣","♠"]:
     for i in mKoloda:
@@ -40,8 +42,7 @@ my = [] #набор моих карт
 my_points = []  #накопление моих очков
 bot = []
 bot_points = [] #накопление очков крупье (бота)
-game = 'play'
-game_bot = 'play'
+game = True
 #x = random.sample(koloda, 1)
 #my.append(x[0])
 #my_points.append(nominal.get(x[0]))
@@ -55,7 +56,7 @@ my_points.append(nominal.get(card[0]))
 
 print('вам выпало', card)
 print(my, 'это ваш набор карт на данный момент. Очков:'+str(sum(my_points)))
-while game == 'play':
+while game:
     choice = input('берете еще?')
     if choice == 'да':
         #x = random.sample(koloda, 1)
@@ -73,10 +74,11 @@ while game == 'play':
             my_points = A(my, my_points)
         print(my, 'это ваш набор карт на данный момент. Очков:'+str(sum(my_points)))
         if sum(my_points) > 21:
-            game = 'stop'
+            game = False
     elif choice == 'нет':
-        game = 'stop'
-while game_bot == 'play':
+        game = False
+game = True
+while game:
     #y = random.sample(koloda, 1)
     #bot_points.append(nominal.get(y[0]))
     print("Крупье берет карту...")
@@ -92,7 +94,7 @@ while game_bot == 'play':
     print("Его карты: ", bot, ". Очков: ", sum(bot_points))
     sleep(random.randint(10,300)/100)
     if sum(bot_points) > 15:
-        game_bot = 'stop'
+        game = False
 
 print("---------------")
 #подсчёт очков
